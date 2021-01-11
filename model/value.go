@@ -14,8 +14,9 @@
 package model
 
 import (
-	"encoding/json"
+	stdJson "encoding/json"
 	"fmt"
+	json "github.com/json-iterator/go"
 	"math"
 	"sort"
 	"strconv"
@@ -95,7 +96,7 @@ func (s SamplePair) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (s *SamplePair) UnmarshalJSON(b []byte) error {
-	v := [...]json.Unmarshaler{&s.Timestamp, &s.Value}
+	v := [...]stdJson.Unmarshaler{&s.Timestamp, &s.Value}
 	return json.Unmarshal(b, &v)
 }
 

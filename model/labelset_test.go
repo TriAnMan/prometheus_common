@@ -15,6 +15,7 @@ package model
 
 import (
 	"encoding/json"
+	"strings"
 	"testing"
 )
 
@@ -55,7 +56,7 @@ func TestUnmarshalJSONLabelSet(t *testing.T) {
 
 	err = json.Unmarshal([]byte(invalidlabelSetJSON), &c)
 	expectedErr := `"1nvalid_23name" is not a valid label name`
-	if err == nil || err.Error() != expectedErr {
+	if err == nil || !strings.Contains(err.Error(), expectedErr) {
 		t.Errorf("expected an error with message '%s' to be thrown", expectedErr)
 	}
 }

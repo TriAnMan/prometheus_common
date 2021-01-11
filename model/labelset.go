@@ -14,8 +14,8 @@
 package model
 
 import (
-	"encoding/json"
 	"fmt"
+	json "github.com/json-iterator/go"
 	"sort"
 	"strings"
 )
